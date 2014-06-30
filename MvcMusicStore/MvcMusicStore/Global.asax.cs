@@ -33,6 +33,8 @@ namespace MvcMusicStore
 
         protected void Application_Start()
         {
+            System.Data.Entity.Database.SetInitializer(new MvcMusicStore.Models.SampleData());
+
             AreaRegistration.RegisterAllAreas();
 
             // Use LocalDB for Entity Framework by default
