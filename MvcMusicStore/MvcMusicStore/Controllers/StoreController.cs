@@ -23,7 +23,7 @@ namespace MvcMusicStore.Controllers
 
         public ActionResult Browse(string genre)
         {
-            var genreModel = new Genre { Name = genre };
+            var genreModel = storeDB.Genres.Include("Albums").Single(g => g.Name == genre);
             return View(genreModel);
         }
 
