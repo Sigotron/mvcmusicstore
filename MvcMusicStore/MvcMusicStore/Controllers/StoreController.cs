@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcMusicStore.Models;
 
 namespace MvcMusicStore.Controllers
 {
@@ -19,19 +20,18 @@ namespace MvcMusicStore.Controllers
         //
         // GET: /Store/Browse?genre=Disco
 
-        public string Browse(string genre)
+        public ActionResult Browse(string genre)
         {
-            // HttpUtility.HtmlEncode sanitizes the user input
-            string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + genre);
-            return message;
+            var genreModel = new Genre { Name = genre };
+            return View(genreModel);
         }
 
         //
         // GET: /Store/Details(5)
 
-        public string Details(int id) {
-            string message = "Store.Details, ID = " + id;
-            return message;
+        public ActionResult Details(int id) {
+            var album = new Album { Title = "Album " + id };
+            return View(album);
         }
     }
 }
